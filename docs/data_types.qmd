@@ -1,0 +1,6 @@
+---
+title: "Day 2: Data Types"
+format: html
+editor: visual
+---
+
