@@ -9,6 +9,7 @@ execute:
 
 ```{r}
 library(tidyverse)
+library(here)
 ```
 
 ## Making & Indexing Data in R
@@ -193,3 +194,4 @@ purrr::pluck(starwars, "starships", 1, 2)
 # getting 2nd value 
 # these two lines both do the same thing
 ```
+
