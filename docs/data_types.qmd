@@ -7,6 +7,10 @@ execute:
   warning: false
 ---
 
+```{r}
+library(tidyverse)
+```
+
 ## Making & Indexing Data in R
 
 #### Vectors
@@ -156,3 +160,36 @@ ttest_ex$conf.int
 ```
 
 Mean size for trees in Site A is similar to Site B (p = `r ttest_ex$p.value`).
+
+## Data Frames
+
+```{r}
+fruit <- data.frame(type = c("apple", "banana", "peach"),
+                    mass = c(130, 195, 150))
+tibble::as_tibble(fruit)
+
+fruit[3,2]
+```
+
+#### Using the pluck() function from purrr
+
+-   helps with indexing from data structures
+
+```{r}
+purrr::pluck(fruit, "type", 2)
+# (data, column, 2nd element)
+```
+
+```{r}
+tibble::as_tibble(starwars)
+
+starwars$starships[[1]]
+# gets values
+starwars$starships[1]
+# gets list
+
+starwars$starships[[1]][2]
+purrr::pluck(starwars, "starships", 1, 2)
+# getting 2nd value 
+# these two lines both do the same thing
+```
