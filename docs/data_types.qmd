@@ -97,9 +97,22 @@ trees[i]
 # gives us values for positions 1 through 3
 ```
 
-##### Reasign values based on position
+##### Re-asign values based on position
+
 ```{r}
 trees[3] <- "oak"
 trees
+```
+
+## Matrix indexing
+
+```{r}
+fish_size <- matrix(c(0.8, 1.2, 1.4, 0.9), ncol = 2, nrow = 2, byrow = FALSE)
+fish_size
+class(fish_size)
+str(fish_size)
+
+fish_size[2,2]
+fish_size[,2] # having the blank space there means keep all the rows
 ```
 
