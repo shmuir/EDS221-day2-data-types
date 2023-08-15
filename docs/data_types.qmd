@@ -148,11 +148,11 @@ ttest_ex <- t.test(sample1, sample2)
 ttest_ex
 ```
 
-The output of a t-test is in a list even though it looks kinda funny in the output. So, we can pull values out of the list by their names. 
+The output of a t-test is in a list even though it looks kinda funny in the output. So, we can pull values out of the list by their names.
+
 ```{r}
 ttest_ex$p.value
 ttest_ex$conf.int
 ```
 
 Mean size for trees in Site A is similar to Site B (p = `r ttest_ex$p.value`).
-
