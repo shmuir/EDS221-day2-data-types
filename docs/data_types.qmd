@@ -7,6 +7,10 @@ execute:
   warning: false
 ---
 
+```{r}
+library(tidyverse)
+```
+
 ## Making & Indexing Data in R
 
 #### Vectors
@@ -118,10 +122,74 @@ fish_size[,2] # having the blank space there means keep all the rows
 
 ## Lists
 
+```{r}
+urchins <- list(color = "blue", values = c(1, 2, 3), meal = c("lunch", "dinner", "dessert"), cost = 5L)
+urchins
+# see we can have different data types and different data structures within a list
+# don't have to give each element names, but you can if you want to and can be useful to refer to them later
+```
 
+```{r}
+urchins_list <- urchins[2]
+urchins_list
+class(urchins_list)
+# returns data but retains structure
+urchins_vector <- urchins[[2]]
+urchins_vector
+class(urchins_vector)
+# returns a vector
+```
 
+```{r}
+urchins$values
+```
 
+```{r}
+sample1 <- c(4,7,2,5,7,2,4)
+sample2 <- c(3,2,7,8)
 
+ttest_ex <- t.test(sample1, sample2)
+ttest_ex
+```
 
+The output of a t-test is in a list even though it looks kinda funny in the output. So, we can pull values out of the list by their names.
 
+```{r}
+ttest_ex$p.value
+ttest_ex$conf.int
+```
 
+Mean size for trees in Site A is similar to Site B (p = `r ttest_ex$p.value`).
+
+## Data Frames
+
+```{r}
+fruit <- data.frame(type = c("apple", "banana", "peach"),
+                    mass = c(130, 195, 150))
+tibble::as_tibble(fruit)
+
+fruit[3,2]
+```
+
+#### Using the pluck() function from purrr
+
+-   helps with indexing from data structures
+
+```{r}
+purrr::pluck(fruit, "type", 2)
+# (data, column, 2nd element)
+```
+
+```{r}
+tibble::as_tibble(starwars)
+
+starwars$starships[[1]]
+# gets values
+starwars$starships[1]
+# gets list
+
+starwars$starships[[1]][2]
+purrr::pluck(starwars, "starships", 1, 2)
+# getting 2nd value 
+# these two lines both do the same thing
+```
