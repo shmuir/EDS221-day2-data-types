@@ -1,6 +1,105 @@
 ---
 title: "Day 2: Data Types"
+date: "15 August 2023"
 format: html
 editor: visual
+execute: 
+  warning: false
 ---
+
+## Making & Indexing Data in R
+
+#### Vectors
+
+```{r}
+dogs <- c("teddy", "khora", "waffle", "banjo", "tallie")
+
+# check the class of dogs
+typeof(dogs)
+class(dogs)
+# sometimes these two will have different results; most of the time will use class()
+```
+
+```{r}
+my_breakfast <- c("waffles", 2, TRUE, "coffee")
+class(my_breakfast)
+# different data types, so all coerced to character since it is the most flexible type
+```
+
+```{r}
+weights <- c(50, 60, 25, 35, 55)
+class(weights)
+typeof(weights)
+# notice that these have different outputs. they are stored as doubles- higher 64-bit
+```
+
+```{r}
+weights_int <- c(50L, 60L, 25L, 35L, 55L)
+typeof(weights_int)
+class(weights_int)
+# adding L after the numbers makes them integers
+```
+
+use "is.\_\_" functions to ask what class something is
+
+```{r}
+is.numeric(weights_int)
+```
+
+use "as.\_\_" functions to recast data classes
+
+```{r}
+zipcodes <- c(93105, 93514, 93101, 93401)
+class(zipcodes)
+
+zipcodes_chr <- as.character(c(93105, 93514, 93101, 93401))
+class(zipcodes_chr)
+```
+
+#### Creating a vector with named elements
+
+```{r}
+dog_food <- c(teddy = "purina", khora = "alpo", waffle = "fancy feast", banjo = "blue diamond", tallie = "farmer's dogs")
+class(dog_food)
+# class will only refer to the values, even though this is a string- doesn't look that it is named
+```
+
+##### Access 2nd element in dog_food
+
+```{r}
+dog_food[2]
+dog_food["khora"]
+# R uses a 1 index- first element is given positional value of 1
+# Python and JavaScript use 0-indexing
+```
+
+##### Access range of values in a vector
+
+```{r}
+trees <- c("ponderosa", "lodegpole", "jeffery", "sugar", "white", "bristlecone")
+trees[3]
+trees[3:5]
+```
+
+## For loops
+
+-   iterates over different elements in a data structure; does something to each of those values and returns something new
+
+```{r}
+# creating an indexing helper
+i <- 4
+trees[i]
+```
+
+```{r}
+i <- seq(1:3)
+trees[i]
+# gives us values for positions 1 through 3
+```
+
+##### Reasign values based on position
+```{r}
+trees[3] <- "oak"
+trees
+```
 
